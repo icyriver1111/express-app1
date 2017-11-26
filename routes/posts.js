@@ -9,5 +9,9 @@ var postContent = {
 router.get('/', function(req, res, next){
   res.render('posts', postContent);
 });
+router.get('/list', function(req, res,next){
+  // res.json(postContent)
+  res.json(postContent)
+})
 
 module.exports = router;

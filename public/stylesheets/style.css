@@ -10,3 +10,7 @@ a {
 .title {
   text-transform: capitalize;
 }
+
+.client-content {
+  background: #ddd;
+}

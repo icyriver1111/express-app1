@@ -4,15 +4,64 @@
     <meta charset="utf-8">
     <title>My posts</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
   </head>
   <body>
+    <h2>服务端渲染</h2>
     <h2 class="title"><%= mytitle %></h2>
     <h2>Welcome to <%= mytitle %></h2>
     <ul>
       <% for(let i = 0; i<postsList.length; i++) {%>
       <li><%= postsList[i] %></li>
       <% } %>
-
     </ul>
+
+    <div class="client-content" id='app'>
+      <h2>客户端渲染</h2>
+      <p v-for="item in postsList">{{ item }}</p>
+    </div>
+  
+    <script>
+    // var vm = new Vue({
+    //   el: '#app',
+    //   data: {
+    //     postsList: []
+    //   },
+    //   methods: {
+    //     fetchData(){
+    //       axios.get('/posts/list')
+    //       .then(function(res){
+    //       console.log(res.data.postsList)
+    //         vm.postsList = res.data.postsList
+    //       })
+    //     }
+    //   }
+    // });
+    // vm.fetchData();
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        postsList: []
+      },
+      methods: {
+        fetchData(){
+          axios.get('/posts/list')
+          .then(function(res){
+            vm.postsList = res.data.postsList
+          })
+
+        }
+      }
+
+    })
+    vm.fetchData()
+
+
+
+
+
+
+    </script>
   </body>
 </html>
