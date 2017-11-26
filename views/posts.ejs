@@ -21,7 +21,7 @@
       <h2>客户端渲染</h2>
       <p v-for="item in postsList">{{ item }}</p>
     </div>
-  
+
     <script>
     // var vm = new Vue({
     //   el: '#app',
@@ -46,7 +46,7 @@
       },
       methods: {
         fetchData(){
-          axios.get('/posts/list')
+          axios.get('/api/posts')
           .then(function(res){
             vm.postsList = res.data.postsList
           })
