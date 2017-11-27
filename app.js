@@ -1,3 +1,6 @@
+//mongodb connect
+require('./models/init');
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,6 +14,8 @@ var posts = require('./routes/posts');
 var api = require('./api/route.api')
 
 var app = express();
+//mongodb
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
