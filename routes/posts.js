@@ -9,6 +9,10 @@ var postContent = {
 router.get('/', function(req, res, next){
   res.render('posts', postContent);
 });
+
+router.get('/create', function(req, res, next){
+  res.render('create')
+})
 // router.get('/list', function(req, res,next){
 //   // res.json(postContent)
 //   res.json(postContent)

@@ -8,5 +8,11 @@ var postContent = {
 router.get('/posts', function(req, res, next){
   res.json(postContent)
 })
+router.post('/posts/create', function(req, res, next){
+  console.log(req)
+  var title = req.body.title
+  var content = req.body.content
+  res.send({title, content})
+})
 
 module.exports = router
