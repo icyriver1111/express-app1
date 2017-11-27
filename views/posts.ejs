@@ -19,7 +19,12 @@
 
     <div class="client-content" id='app'>
       <h2>客户端渲染</h2>
-      <p v-for="item in postsList">{{ item.title }}</p>
+      <div v-for="item in postsList">
+        <ul>
+          <li>  <a v-bind:href="item.url">  {{ item.title }}</a></li>
+        </ul>
+
+      </div>
     </div>
 
     <script>
@@ -49,6 +54,7 @@
           axios.get('/api/posts')
           .then(function(res){
             vm.postsList = res.data.postsList
+            vm.postsList.forEach((element) => element.url = '/posts/show?id=' + element._id)
           })
 
         }
