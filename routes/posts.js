@@ -1,6 +1,7 @@
 
 var express = require('express');
 var router = express.Router();
+var fs = require('fs')
 var marked = require('marked')
 var PostModel = require('../models/post')
 //这里下面的get('/')为何这样设计呢，不直接写成get('/posts')
@@ -21,6 +22,7 @@ router.get('/show', function(req, res, next){
   var id = req.query.id
   PostModel.findOne({_id: id},function(err, post){
     post.content = marked(post.content)
+    //console.log(post.content)
     res.render('show', {post})
   })
 })
