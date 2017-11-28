@@ -7,11 +7,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var marked = require('marked')
+var useragent = require('express-useragent');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');
 var api = require('./api/route.api')
+
+var debug = require('debug')('app1:app');
+debug('test app log')
 
 var app = express();
 //mongodb
@@ -28,6 +33,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(useragent.express());
+
+// app.use( function(req, res, next){
+//   console.log(req.useragent.browser);
+//   next();
+// })
 
 app.use('/',index);
 app.use('/users', users);

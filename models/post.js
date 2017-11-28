@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
-  title: String,
-  content: String
+  title: {type: String, require: true, default: 'title'},
+  content: {type: String, require: true},
 });
 
 const PostModel = mongoose.model('Post', PostSchema);

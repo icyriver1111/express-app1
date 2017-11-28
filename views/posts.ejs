@@ -2,10 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>My posts</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
+
+
   </head>
   <body>
     <h2>服务端渲染</h2>
@@ -19,11 +24,13 @@
 
     <div class="client-content" id='app'>
       <h2>客户端渲染</h2>
+    <a href="/posts/create" class="btnn learn">+新增文章</a>
       <div v-for="item in postsList">
-        <ul>
-          <li>  <a v-bind:href="item.url">  {{ item.title }}</a></li>
+        <ul class="list-group">
+          <ul class="list-group-item">
+             <a v-bind:href="item.url">  {{ item.title }}</a>
+          </ul>
         </ul>
-
       </div>
     </div>
 
@@ -62,12 +69,6 @@
 
     })
     vm.fetchData()
-
-
-
-
-
-
     </script>
   </body>
 </html>
